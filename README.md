@@ -1,6 +1,10 @@
 # Nutriva
 
-React and TypeScript app powered by Vite.
+Nutriva is a fast, AI-powered guide to fruits and vegetables. Search for a specific item or describe what you want food to support—such as “improve eye health”—and get a ranked list of produce that fits.
+
+ChatGPT is built for broad conversations; Nutriva is built for this one task. It sends Jev a short query and a compact list of produce names, then returns matching options directly. That focused request avoids prompt crafting and extra back-and-forth, making produce suggestions quick to scan. Each result includes nutrition per common serving, including calories, carbs, fiber, sugar, protein, fat, and notable vitamins and minerals.
+
+The catalog includes 40 fruits and 40 vegetables, with an image and approximate nutrition information for each.
 
 ## Getting started
 
@@ -11,10 +15,17 @@ npm run dev
 
 ## AI search
 
-Add a TypeSafe API key to `.env.local` as `TYPESAFE_API_KEY=...`. The key stays
-in the Vite server and is never sent to the browser. The local dev and preview
-servers provide the search endpoint; a deployed static build needs an equivalent
-server-side endpoint.
+For local development, add a TypeSafe API key to `.env.local`:
+
+```sh
+TYPESAFE_API_KEY=your_key_here
+```
+
+The key stays on the server and is never sent to the browser. Vite serves
+`/api/produce-search` locally, and `api/produce-search.ts` provides the same
+endpoint as a Vercel serverless function in production. In Vercel, add
+`TYPESAFE_API_KEY` under **Project Settings → Environment Variables**, then
+redeploy.
 
 ## Scripts
 
