@@ -138,10 +138,11 @@ function App() {
       }
 
       const rankedItems = result.items
-        ?.map(({ name }) => produce.find((item) => item.name === name))
+        ?.filter(({ probability }) => typeof probability === 'number' && probability > 0)
+        .map(({ name }) => produce.find((item) => item.name === name))
         .filter((item): item is ProduceItem => Boolean(item))
-      if (!rankedItems || rankedItems.length !== 10) {
-        throw new Error('AI did not return 10 matching produce items. Please try again.')
+      if (!rankedItems || rankedItems.length === 0 || rankedItems.length > 10) {
+        throw new Error('AI did not return matching produce items. Please try again.')
       }
       setMatches(rankedItems)
     } catch (searchError) {
@@ -197,7 +198,7 @@ function App() {
         {error && <p className="search-error" role="alert">{error}</p>}
         {matches.length > 0 && (
           <div className="search-result" aria-live="polite">
-            <h3>Top 10 matches</h3>
+            <h3>{matches.length === 10 ? 'Top 10 matches' : 'Top matches'}</h3>
             <ul className="search-result-list">
               {matches.map((item) => (
                 <li key={item.name}>

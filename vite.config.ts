@@ -134,11 +134,13 @@ function jevSearchApi(): Plugin {
           item: produceByChoice.get(option),
           probability,
         }))
-        .filter((entry): entry is { item: ProduceItem; probability: number } => Boolean(entry.item))
+        .filter((entry): entry is { item: ProduceItem; probability: number } =>
+          Boolean(entry.item) && entry.probability > 0,
+        )
         .sort((a, b) => b.probability - a.probability)
         .slice(0, 10)
 
-      if (rankedItems.length < 10 || !rankedItems.some(({ item }) => item.name === produceByChoice.get(choice)?.name)) {
+      if (!rankedItems.length || !rankedItems.some(({ item }) => item.name === produceByChoice.get(choice)?.name)) {
         respond(res, 502, { error: 'AI returned an incomplete ranking. Try again.' })
         return
       }
