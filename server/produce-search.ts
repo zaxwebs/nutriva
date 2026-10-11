@@ -1,3 +1,4 @@
+import type { IncomingMessage, ServerResponse } from 'node:http'
 import { produce } from '../src/data.js'
 
 type ProduceItem = (typeof produce)[number]
@@ -24,6 +25,64 @@ const produceByChoice = new Map(produce.map((item) => [toChoice(item.name), item
 
 function toChoice(name: string) {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+}
+
+export type ProduceSearchRequest = IncomingMessage & { body?: unknown }
+
+function respond(res: ServerResponse, status: number, body: unknown) {
+  res.statusCode = status
+  res.setHeader('Content-Type', 'application/json; charset=utf-8')
+  res.setHeader('Cache-Control', 'no-store')
+  res.end(JSON.stringify(body))
+}
+
+async function readRequestBody(req: ProduceSearchRequest) {
+  if ('body' in req) {
+    if (typeof req.body === 'string' || Buffer.isBuffer(req.body)) {
+      const rawBody = typeof req.body === 'string' ? req.body : req.body.toString('utf8')
+      if (Buffer.byteLength(rawBody) > 8_192) throw new Error('request_too_large')
+      return JSON.parse(rawBody) as unknown
+    }
+
+    return req.body
+  }
+
+  const chunks: Buffer[] = []
+  let size = 0
+  for await (const chunk of req) {
+    const buffer = typeof chunk === 'string' ? Buffer.from(chunk) : chunk
+    size += buffer.length
+    if (size > 8_192) throw new Error('request_too_large')
+    chunks.push(buffer)
+  }
+
+  return JSON.parse(Buffer.concat(chunks).toString('utf8')) as unknown
+}
+
+export async function handleProduceSearchRequest(
+  req: ProduceSearchRequest,
+  res: ServerResponse,
+  apiKey: string,
+) {
+  if (req.method !== 'POST') {
+    respond(res, 405, { error: 'Use POST to search produce.' })
+    return
+  }
+
+  let query: unknown
+  try {
+    const body = await readRequestBody(req)
+    query = typeof body === 'object' && body !== null && 'query' in body
+      ? (body as { query: unknown }).query
+      : undefined
+  } catch (error) {
+    const status = error instanceof Error && error.message === 'request_too_large' ? 413 : 400
+    respond(res, status, { error: status === 413 ? 'Search query is too long.' : 'Send a valid JSON body.' })
+    return
+  }
+
+  const result = await searchProduce(query, apiKey)
+  respond(res, result.status, result.body)
 }
 
 export async function searchProduce(query: unknown, apiKey: string): Promise<ProduceSearchResult> {
