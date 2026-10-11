@@ -1,10 +1,12 @@
 # Nutriva
 
-Nutriva is a fast, AI-powered guide to fruits and vegetables. Search for a specific item or describe what you want food to support—such as “improve eye health”—and get a ranked list of produce that fits.
+### Your personal produce specialist.
 
-ChatGPT is built for broad conversations; Nutriva is built for this one task. It sends Jev a short query and a compact list of produce names, then returns matching options directly. That focused request avoids prompt crafting and extra back-and-forth, making produce suggestions quick to scan. Each result includes nutrition per common serving, including calories, carbs, fiber, sugar, protein, fat, and notable vitamins and minerals.
+Powered by ultra-fast AI.
 
-The catalog includes 40 fruits and 40 vegetables, with an image and approximate nutrition information for each.
+Discover the best fruits and vegetables for your health goals. Whether you're looking to improve eye health, support better sleep, or boost your energy, simply tell us what you want to achieve and we'll find the foods that can help.
+
+**Better health starts with better food.**
 
 ## Getting started
 
