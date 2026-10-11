@@ -1,0 +1,633 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Manrope, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #26372d;
+  background: #f7f8f4;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(228, 239, 213, 0.55), transparent 26rem),
+    #f7f8f4;
+  line-height: 1.5;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+  padding: 32px 24px 32px;
+}
+
+.app-shell {
+  width: min(100%, 820px);
+  margin: 0 auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@property --hero-orbit-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 0 24px;
+  text-align: center;
+}
+
+.hero-art {
+  position: relative;
+  width: 164px;
+  height: 184px;
+  margin-bottom: 24px;
+}
+
+.hero-orbit {
+  position: absolute;
+  inset: 0;
+  width: 128px;
+  height: 128px;
+  margin: auto;
+  --hero-orbit-angle: 0deg;
+  transform: rotate(var(--hero-orbit-angle));
+  animation: hero-orbit-rotation 40s linear infinite;
+}
+
+.hero-orbit-point {
+  position: absolute;
+}
+
+.hero-produce {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  scale: 1;
+  rotate: calc(0deg - var(--hero-orbit-angle));
+  animation:
+    hero-bob 3s ease-in-out infinite,
+    hero-selection-scale 8s ease-in-out infinite;
+  animation-delay: 0s, 0s;
+  will-change: translate;
+}
+
+.hero-orbit-point--lychee {
+  top: 16px;
+  left: 50%;
+  width: 52px;
+  height: 46px;
+  transform: translate(-50%, -50%);
+}
+
+.hero-orbit-point--spinach {
+  top: 50%;
+  left: calc(50% + 48px);
+  width: 48px;
+  height: 48px;
+  transform: translate(-50%, -50%);
+}
+
+.hero-produce--spinach {
+  transform: rotate(8deg);
+  animation-delay: 0.4s, -6s;
+}
+
+.hero-orbit-point--peach {
+  top: calc(50% + 48px);
+  left: 50%;
+  width: 48px;
+  height: 48px;
+  transform: translate(-50%, -50%);
+}
+
+.hero-produce--peach {
+  transform: rotate(10deg);
+  animation-delay: 0.8s, -4s;
+}
+
+.hero-orbit-point--mango {
+  top: 50%;
+  left: calc(50% - 48px);
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+}
+
+.hero-produce--lychee {
+  transform: rotate(-14deg);
+}
+
+.hero-produce--mango {
+  transform: rotate(-12deg);
+  animation-delay: 1.2s, -2s;
+}
+
+@keyframes hero-orbit-rotation {
+  to {
+    --hero-orbit-angle: 360deg;
+  }
+}
+
+@keyframes hero-bob {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -5px;
+  }
+}
+
+@keyframes hero-selection-scale {
+  0%,
+  5%,
+  22%,
+  100% {
+    scale: 1;
+  }
+
+  9% {
+    scale: 1.18;
+  }
+
+  14% {
+    scale: 1.14;
+  }
+
+  18% {
+    scale: 1;
+  }
+}
+
+.hero-title {
+  max-width: 500px;
+  margin: 0;
+  color: #26372d;
+  font-size: 19px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.hero-powered {
+  margin: 2px 0 0;
+  color: #858b86;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.search-section {
+  margin: 0 0 32px;
+}
+
+.search-form label {
+  display: block;
+}
+
+.search-controls {
+  display: flex;
+  gap: 9px;
+}
+
+.search-controls input {
+  min-width: 0;
+  min-height: 50px;
+  flex: 1;
+  padding: 0 16px;
+  border: 1px solid #dbe4d4;
+  border-radius: 16px;
+  outline: none;
+  background: #fff;
+  color: #26372d;
+  font-size: 14px;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.search-controls input::placeholder {
+  color: #99a49a;
+}
+
+.search-controls input:focus {
+  border-color: #82a86f;
+  box-shadow: 0 0 0 4px rgba(130, 168, 111, 0.17);
+}
+
+.search-controls button {
+  min-width: 108px;
+  min-height: 50px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 16px;
+  background: #39724c;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 5px 12px rgba(46, 104, 64, 0.16);
+  transition: background 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.search-controls button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #2f6542;
+  box-shadow: 0 7px 16px rgba(46, 104, 64, 0.22);
+}
+
+.search-controls button:disabled {
+  cursor: wait;
+  opacity: 0.66;
+}
+
+.search-controls input:focus-visible,
+.search-controls button:focus-visible {
+  outline: 3px solid rgba(83, 132, 92, 0.34);
+  outline-offset: 3px;
+}
+
+.search-error {
+  margin: 12px 0 0;
+  color: #a63d35;
+  font-size: 13px;
+}
+
+.search-result {
+  margin-top: 20px;
+}
+
+.search-result h3 {
+  margin: 0 0 12px;
+  color: #38503e;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.search-result-list,
+.produce-list {
+  display: grid;
+  gap: 11px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.produce-section {
+  margin-top: 36px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: #283c2f;
+  font-size: 23px;
+  font-weight: 740;
+  letter-spacing: -0.035em;
+}
+
+.items-count {
+  color: #849087;
+  font-size: 12px;
+  font-weight: 550;
+}
+
+.produce-item {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid #e9ece4;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(49, 61, 46, 0.035);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.produce-image-wrap {
+  display: grid;
+  width: 68px;
+  height: 68px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid #eff2e8;
+  border-radius: 50%;
+  background: #f5f7ee;
+}
+
+.produce-item img {
+  display: block;
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+}
+
+.produce-copy {
+  min-width: 0;
+}
+
+.produce-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.produce-heading h3 {
+  margin: 0;
+  color: #293d30;
+  font-size: 16px;
+  font-weight: 720;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.produce-serving {
+  margin: 3px 0 0;
+  color: #89938a;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.serving-weight {
+  flex: 0 0 auto;
+  padding-top: 1px;
+  color: #89938a;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.nutrient-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.nutrient-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.nutrient-value strong {
+  font-weight: 680;
+}
+
+.nutrient-value__dot {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+}
+
+.nutrient-value--energy {
+  color: #7c5c20;
+}
+
+.nutrient-value--energy .nutrient-value__dot {
+  background: #e6a323;
+}
+
+.nutrient-value--carbs {
+  color: #416b3e;
+}
+
+.nutrient-value--carbs .nutrient-value__dot {
+  background: #79a95b;
+}
+
+.nutrient-value--fiber {
+  color: #875746;
+}
+
+.nutrient-value--fiber .nutrient-value__dot {
+  background: #d57a5b;
+}
+
+.nutrition-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 13px;
+  margin: 4px 0 0;
+  color: #7c887e;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.nutrition-detail {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 680;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.nutrition-detail strong {
+  color: inherit;
+  font-weight: inherit;
+}
+
+.nutrition-detail__dot {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+}
+
+.nutrition-detail--sugar {
+  color: #4f6f96;
+}
+
+.nutrition-detail--sugar .nutrition-detail__dot {
+  background: #75a2d0;
+}
+
+.nutrition-detail--protein {
+  color: #6b5d8d;
+}
+
+.nutrition-detail--protein .nutrition-detail__dot {
+  background: #9984c2;
+}
+
+.nutrition-detail--fat {
+  color: #856421;
+}
+
+.nutrition-detail--fat .nutrition-detail__dot {
+  background: #d4a436;
+}
+
+.micronutrient-details {
+  margin: 3px 0 0;
+  color: #7c887e;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.micronutrient-details {
+  color: #5d7662;
+}
+
+.site-footer {
+  margin-top: 28px;
+  padding: 8px 0 0;
+  color: #89938a;
+  text-align: center;
+  font-size: 12px;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer a {
+  color: #5f7962;
+  font-weight: 650;
+  text-decoration-color: #bdcbbb;
+  text-underline-offset: 3px;
+  transition: color 160ms ease;
+}
+
+.site-footer a:hover {
+  color: #39724c;
+}
+
+.site-footer a:focus-visible {
+  border-radius: 2px;
+  outline: 2px solid #82a86f;
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .produce-item:hover {
+    transform: translateY(-1px);
+    border-color: #dce7d4;
+    box-shadow: 0 8px 20px rgba(49, 72, 44, 0.075);
+  }
+}
+
+@media (max-width: 560px) {
+  #root {
+    padding: 30px 16px 24px;
+  }
+
+  .search-section {
+    margin-bottom: 26px;
+  }
+
+  .search-controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .search-controls button {
+    width: 100%;
+  }
+
+  .produce-section {
+    margin-top: 30px;
+  }
+
+  .produce-item {
+    grid-template-columns: 54px minmax(0, 1fr);
+    gap: 11px;
+    padding: 12px;
+    border-radius: 19px;
+  }
+
+  .produce-image-wrap,
+  .produce-item img {
+    width: 54px;
+    height: 54px;
+  }
+
+  .produce-heading h3 {
+    font-size: 15px;
+  }
+
+  .serving-weight {
+    font-size: 10px;
+  }
+
+  .nutrient-values {
+    gap: 10px;
+    margin-top: 8px;
+  }
+
+  .nutrient-value {
+    font-size: 10px;
+  }
+
+  .nutrition-details,
+  .micronutrient-details {
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hero-produce {
+    animation: none !important;
+    will-change: auto;
+  }
+
+  .hero-orbit {
+    animation: none !important;
+  }
+}

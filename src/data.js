@@ -1,0 +1,112 @@
+/**
+ * Approximate nutrition for the serving listed on each item. Produce is raw;
+ * mango and avocado weights refer to the edible portion. Values vary by size
+ * and variety.
+ *
+ * @typedef {Object} NutritionPerServing
+ * @property {number} caloriesKcal
+ * @property {number} carbsG
+ * @property {number} fiberG
+ * @property {number} sugarG
+ * @property {number} proteinG
+ * @property {number} fatG
+ *
+ * @typedef {Object} ProduceItem
+ * @property {string} name
+ * @property {'fruit' | 'vegetable'} category
+ * @property {string} serving
+ * @property {number} servingWeightG
+ * @property {NutritionPerServing} nutritionPerServing
+ * @property {string[]} micronutrientsPerServing
+ */
+
+/** @type {ProduceItem[]} */
+export const fruits = [
+  { name: 'Apple', category: 'fruit', serving: '1 medium', servingWeightG: 182, nutritionPerServing: { caloriesKcal: 94.64, carbsG: 25.13, fiberG: 4.37, sugarG: 18.91, proteinG: 0.47, fatG: 0.31 }, micronutrientsPerServing: ['Vitamin C 8.4 mg', 'Potassium 195 mg'] },
+  { name: 'Banana', category: 'fruit', serving: '1 medium', servingWeightG: 118, nutritionPerServing: { caloriesKcal: 105.02, carbsG: 26.95, fiberG: 3.07, sugarG: 14.43, proteinG: 1.29, fatG: 0.39 }, micronutrientsPerServing: ['Potassium 422 mg', 'Vitamin B6 0.43 mg'] },
+  { name: 'Orange', category: 'fruit', serving: '1 medium', servingWeightG: 131, nutritionPerServing: { caloriesKcal: 61.57, carbsG: 15.39, fiberG: 3.14, sugarG: 12.25, proteinG: 1.23, fatG: 0.16 }, micronutrientsPerServing: ['Vitamin C 59 mg', 'Folate 39 µg', 'Potassium 237 mg'] },
+  { name: 'Strawberry', category: 'fruit', serving: '1 medium', servingWeightG: 12, nutritionPerServing: { caloriesKcal: 3.84, carbsG: 0.92, fiberG: 0.24, sugarG: 0.59, proteinG: 0.08, fatG: 0.04 }, micronutrientsPerServing: ['Vitamin C 7.1 mg', 'Manganese 0.05 mg'] },
+  { name: 'Blueberry', category: 'fruit', serving: '1 cup', servingWeightG: 148, nutritionPerServing: { caloriesKcal: 84.36, carbsG: 21.45, fiberG: 3.55, sugarG: 14.74, proteinG: 1.1, fatG: 0.49 }, micronutrientsPerServing: ['Vitamin K 28.6 µg', 'Manganese 0.50 mg'] },
+  { name: 'Grapes', category: 'fruit', serving: '1 cup', servingWeightG: 151, nutritionPerServing: { caloriesKcal: 104.19, carbsG: 27.33, fiberG: 1.36, sugarG: 23.37, proteinG: 1.09, fatG: 0.24 }, micronutrientsPerServing: ['Potassium 288 mg', 'Vitamin K 22 µg'] },
+  { name: 'Mango', category: 'fruit', serving: '1 medium, edible portion', servingWeightG: 336, nutritionPerServing: { caloriesKcal: 201.6, carbsG: 50.33, fiberG: 5.38, sugarG: 45.9, proteinG: 2.76, fatG: 1.28 }, micronutrientsPerServing: ['Vitamin C 122 mg', 'Vitamin A 181 µg RAE', 'Potassium 564 mg'] },
+  { name: 'Pineapple', category: 'fruit', serving: '1 cup chunks', servingWeightG: 165, nutritionPerServing: { caloriesKcal: 82.5, carbsG: 21.65, fiberG: 2.31, sugarG: 16.25, proteinG: 0.89, fatG: 0.2 }, micronutrientsPerServing: ['Vitamin C 79 mg', 'Manganese 1.53 mg'] },
+  { name: 'Avocado', category: 'fruit', serving: '1 medium, edible portion', servingWeightG: 150, nutritionPerServing: { caloriesKcal: 240, carbsG: 12.8, fiberG: 10.05, sugarG: 0.99, proteinG: 3, fatG: 21.99 }, micronutrientsPerServing: ['Potassium 728 mg', 'Folate 122 µg'] },
+  { name: 'Watermelon', category: 'fruit', serving: '1 cup diced', servingWeightG: 152, nutritionPerServing: { caloriesKcal: 45.6, carbsG: 11.48, fiberG: 0.61, sugarG: 9.42, proteinG: 0.93, fatG: 0.23 }, micronutrientsPerServing: ['Vitamin C 12 mg', 'Vitamin A 43 µg RAE', 'Potassium 170 mg'] },
+  { name: 'Pear', category: 'fruit', serving: '1 medium', servingWeightG: 178, nutritionPerServing: { caloriesKcal: 101.46, carbsG: 27.11, fiberG: 5.52, sugarG: 17.36, proteinG: 0.64, fatG: 0.25 }, micronutrientsPerServing: ['Potassium 206 mg', 'Vitamin C 7.7 mg'] },
+  { name: 'Kiwi', category: 'fruit', serving: '1 medium', servingWeightG: 69, nutritionPerServing: { caloriesKcal: 42.09, carbsG: 10.12, fiberG: 2.07, sugarG: 6.2, proteinG: 0.79, fatG: 0.36 }, micronutrientsPerServing: ['Vitamin C 64 mg', 'Vitamin K 27.8 µg', 'Potassium 215 mg'] },
+  { name: 'Guava', category: 'fruit', serving: '1 medium (100 g)', servingWeightG: 100, nutritionPerServing: { caloriesKcal: 68, carbsG: 14.3, fiberG: 5.4, sugarG: 8.9, proteinG: 2.6, fatG: 1 }, micronutrientsPerServing: ['Vitamin C 228 mg', 'Potassium 417 mg'] },
+  { name: 'Papaya', category: 'fruit', serving: '1 cup cubes', servingWeightG: 145, nutritionPerServing: { caloriesKcal: 62, carbsG: 15.7, fiberG: 2.5, sugarG: 11.3, proteinG: 0.7, fatG: 0.4 }, micronutrientsPerServing: ['Vitamin C 88 mg', 'Vitamin A 68 µg RAE'] },
+  { name: 'Pomegranate', category: 'fruit', serving: '1/2 cup arils', servingWeightG: 87, nutritionPerServing: { caloriesKcal: 72, carbsG: 16.3, fiberG: 3.5, sugarG: 11.9, proteinG: 1.5, fatG: 1 }, micronutrientsPerServing: ['Vitamin K 16 µg', 'Folate 33 µg'] },
+  { name: 'Chikoo', category: 'fruit', serving: '1 medium, edible portion', servingWeightG: 150, nutritionPerServing: { caloriesKcal: 125, carbsG: 29.9, fiberG: 8, sugarG: 22.1, proteinG: 0.6, fatG: 1.7 }, micronutrientsPerServing: ['Vitamin C 22 mg', 'Potassium 290 mg'] },
+  { name: 'Lychee', category: 'fruit', serving: '10 fruits', servingWeightG: 100, nutritionPerServing: { caloriesKcal: 66, carbsG: 16.5, fiberG: 1.3, sugarG: 15.2, proteinG: 0.8, fatG: 0.4 }, micronutrientsPerServing: ['Vitamin C 72 mg', 'Potassium 171 mg'] },
+  { name: 'Coconut', category: 'fruit', serving: '1/4 cup fresh grated', servingWeightG: 20, nutritionPerServing: { caloriesKcal: 71, carbsG: 3.1, fiberG: 1.8, sugarG: 1.2, proteinG: 0.7, fatG: 6.7 }, micronutrientsPerServing: ['Manganese 0.3 mg', 'Copper 0.06 mg'] },
+  { name: 'Jackfruit', category: 'fruit', serving: '1 cup bulbs', servingWeightG: 165, nutritionPerServing: { caloriesKcal: 157, carbsG: 38.4, fiberG: 2.5, sugarG: 31.5, proteinG: 2.8, fatG: 1.1 }, micronutrientsPerServing: ['Vitamin C 23 mg', 'Potassium 739 mg'] },
+  { name: 'Custard apple', category: 'fruit', serving: '1/2 cup pulp', servingWeightG: 125, nutritionPerServing: { caloriesKcal: 126, carbsG: 31.5, fiberG: 3, sugarG: 16.9, proteinG: 2.1, fatG: 0.8 }, micronutrientsPerServing: ['Vitamin C 19 mg', 'Potassium 248 mg'] },
+  { name: 'Lemon', category: 'fruit', serving: '1 medium', servingWeightG: 58, nutritionPerServing: { caloriesKcal: 17, carbsG: 5.4, fiberG: 1.6, sugarG: 1.5, proteinG: 0.6, fatG: 0.2 }, micronutrientsPerServing: ['Vitamin C 31 mg', 'Potassium 80 mg'] },
+  { name: 'Sweet lime', category: 'fruit', serving: '1 medium', servingWeightG: 100, nutritionPerServing: { caloriesKcal: 43, carbsG: 9.3, fiberG: 0.7, sugarG: 8.4, proteinG: 0.8, fatG: 0.3 }, micronutrientsPerServing: ['Vitamin C 50 mg', 'Folate 10 µg'] },
+  { name: 'Amla', category: 'fruit', serving: '1 fruit', servingWeightG: 25, nutritionPerServing: { caloriesKcal: 16, carbsG: 3.8, fiberG: 2.6, sugarG: 1.3, proteinG: 0.5, fatG: 0.2 }, micronutrientsPerServing: ['Vitamin C 100 mg', 'Calcium 12 mg'] },
+  { name: 'Jamun', category: 'fruit', serving: '1 cup', servingWeightG: 100, nutritionPerServing: { caloriesKcal: 60, carbsG: 15, fiberG: 0.6, sugarG: 9.5, proteinG: 0.7, fatG: 0.2 }, micronutrientsPerServing: ['Vitamin C 18 mg', 'Potassium 79 mg'] },
+  { name: 'Ber', category: 'fruit', serving: '1 cup', servingWeightG: 100, nutritionPerServing: { caloriesKcal: 79, carbsG: 20, fiberG: 2.5, sugarG: 13, proteinG: 1.2, fatG: 0.2 }, micronutrientsPerServing: ['Vitamin C 69 mg', 'Potassium 250 mg'] },
+  { name: 'Dates', category: 'fruit', serving: '2 Medjool dates', servingWeightG: 48, nutritionPerServing: { caloriesKcal: 133, carbsG: 36, fiberG: 3.2, sugarG: 32, proteinG: 0.9, fatG: 0.1 }, micronutrientsPerServing: ['Potassium 334 mg', 'Magnesium 26 mg'] },
+  { name: 'Muskmelon', category: 'fruit', serving: '1 cup diced', servingWeightG: 160, nutritionPerServing: { caloriesKcal: 54, carbsG: 13.1, fiberG: 1.4, sugarG: 12.6, proteinG: 1.3, fatG: 0.3 }, micronutrientsPerServing: ['Vitamin C 36 mg', 'Vitamin A 270 mcg RAE'] },
+  { name: 'Dragon fruit', category: 'fruit', serving: '1 cup cubes', servingWeightG: 227, nutritionPerServing: { caloriesKcal: 136, carbsG: 29, fiberG: 7, sugarG: 18, proteinG: 3, fatG: 0.4 }, micronutrientsPerServing: ['Magnesium 68 mg', 'Vitamin C 9 mg'] },
+  { name: 'Fig', category: 'fruit', serving: '2 medium', servingWeightG: 100, nutritionPerServing: { caloriesKcal: 74, carbsG: 19.2, fiberG: 2.9, sugarG: 16.3, proteinG: 0.8, fatG: 0.3 }, micronutrientsPerServing: ['Potassium 232 mg', 'Calcium 35 mg'] },
+  { name: 'Plum', category: 'fruit', serving: '1 medium', servingWeightG: 66, nutritionPerServing: { caloriesKcal: 30, carbsG: 7.5, fiberG: 0.9, sugarG: 6.6, proteinG: 0.5, fatG: 0.2 }, micronutrientsPerServing: ['Vitamin C 6 mg', 'Potassium 104 mg'] },
+  { name: 'Peach', category: 'fruit', serving: '1 medium', servingWeightG: 150, nutritionPerServing: { caloriesKcal: 59, carbsG: 14.3, fiberG: 2.3, sugarG: 12.3, proteinG: 1.4, fatG: 0.4 }, micronutrientsPerServing: ['Vitamin C 10 mg', 'Vitamin A 49 mcg RAE'] },
+  { name: 'Apricot', category: 'fruit', serving: '3 fresh apricots', servingWeightG: 105, nutritionPerServing: { caloriesKcal: 50, carbsG: 11.4, fiberG: 2.1, sugarG: 9.3, proteinG: 1.4, fatG: 0.4 }, micronutrientsPerServing: ['Vitamin A 96 mcg RAE', 'Potassium 259 mg'] },
+  { name: 'Grapefruit', category: 'fruit', serving: '1/2 fruit', servingWeightG: 123, nutritionPerServing: { caloriesKcal: 52, carbsG: 13.2, fiberG: 2, sugarG: 8.5, proteinG: 1, fatG: 0.2 }, micronutrientsPerServing: ['Vitamin C 38 mg', 'Potassium 166 mg'] },
+  { name: 'Star fruit', category: 'fruit', serving: '1 medium', servingWeightG: 91, nutritionPerServing: { caloriesKcal: 28, carbsG: 6.1, fiberG: 2.5, sugarG: 3.6, proteinG: 1, fatG: 0.3 }, micronutrientsPerServing: ['Vitamin C 31 mg', 'Potassium 121 mg'] },
+  { name: 'Tamarind', category: 'fruit', serving: '1 tbsp pulp', servingWeightG: 15, nutritionPerServing: { caloriesKcal: 36, carbsG: 9.5, fiberG: 1.2, sugarG: 6.5, proteinG: 0.5, fatG: 0.1 }, micronutrientsPerServing: ['Potassium 78 mg', 'Magnesium 6 mg'] },
+  { name: 'Pomelo', category: 'fruit', serving: '1 cup segments', servingWeightG: 190, nutritionPerServing: { caloriesKcal: 72, carbsG: 18.3, fiberG: 1.9, sugarG: 14.6, proteinG: 1.4, fatG: 0.1 }, micronutrientsPerServing: ['Vitamin C 116 mg', 'Potassium 410 mg'] },
+  { name: 'Passion fruit', category: 'fruit', serving: '2 fruits', servingWeightG: 36, nutritionPerServing: { caloriesKcal: 35, carbsG: 8.4, fiberG: 3.7, sugarG: 2.2, proteinG: 0.8, fatG: 0.4 }, micronutrientsPerServing: ['Vitamin C 8 mg', 'Vitamin A 24 mcg RAE'] },
+  { name: 'Mulberry', category: 'fruit', serving: '1 cup', servingWeightG: 140, nutritionPerServing: { caloriesKcal: 60, carbsG: 13.7, fiberG: 2.4, sugarG: 11.3, proteinG: 2, fatG: 0.6 }, micronutrientsPerServing: ['Vitamin C 51 mg', 'Potassium 272 mg'] },
+  { name: 'Mangosteen', category: 'fruit', serving: '1 cup segments', servingWeightG: 196, nutritionPerServing: { caloriesKcal: 143, carbsG: 35, fiberG: 3.5, sugarG: 25, proteinG: 1.4, fatG: 1 }, micronutrientsPerServing: ['Vitamin C 5 mg', 'Potassium 48 mg'] },
+  { name: 'Cherries', category: 'fruit', serving: '1 cup', servingWeightG: 154, nutritionPerServing: { caloriesKcal: 97, carbsG: 24.7, fiberG: 3.2, sugarG: 19.7, proteinG: 1.6, fatG: 0.3 }, micronutrientsPerServing: ['Potassium 342 mg', 'Vitamin C 10 mg'] },
+]
+
+/** @type {ProduceItem[]} */
+export const vegetables = [
+  { name: 'Carrot', category: 'vegetable', serving: '1 medium', servingWeightG: 61, nutritionPerServing: { caloriesKcal: 25.01, carbsG: 5.84, fiberG: 1.71, sugarG: 2.89, proteinG: 0.57, fatG: 0.15 }, micronutrientsPerServing: ['Vitamin A 509 µg RAE', 'Potassium 195 mg'] },
+  { name: 'Broccoli', category: 'vegetable', serving: '1 cup chopped', servingWeightG: 91, nutritionPerServing: { caloriesKcal: 30.94, carbsG: 6.04, fiberG: 2.37, sugarG: 1.55, proteinG: 2.57, fatG: 0.34 }, micronutrientsPerServing: ['Vitamin C 81 mg', 'Folate 57 µg', 'Potassium 288 mg'] },
+  { name: 'Spinach', category: 'vegetable', serving: '1 cup raw', servingWeightG: 30, nutritionPerServing: { caloriesKcal: 6.9, carbsG: 1.09, fiberG: 0.66, sugarG: 0.13, proteinG: 0.86, fatG: 0.12 }, micronutrientsPerServing: ['Vitamin K 145 µg', 'Folate 58 µg', 'Magnesium 24 mg'] },
+  { name: 'Tomato', category: 'vegetable', serving: '1 medium', servingWeightG: 123, nutritionPerServing: { caloriesKcal: 22.14, carbsG: 4.78, fiberG: 1.48, sugarG: 3.23, proteinG: 1.08, fatG: 0.25 }, micronutrientsPerServing: ['Potassium 292 mg', 'Vitamin C 17 mg'] },
+  { name: 'Cucumber', category: 'vegetable', serving: '1 cup sliced', servingWeightG: 104, nutritionPerServing: { caloriesKcal: 15.6, carbsG: 3.78, fiberG: 0.52, sugarG: 1.74, proteinG: 0.68, fatG: 0.11 }, micronutrientsPerServing: ['Potassium 153 mg', 'Vitamin K 17 µg'] },
+  { name: 'Red bell pepper', category: 'vegetable', serving: '1 medium', servingWeightG: 119, nutritionPerServing: { caloriesKcal: 36.89, carbsG: 7.18, fiberG: 2.5, sugarG: 5, proteinG: 1.18, fatG: 0.36 }, micronutrientsPerServing: ['Vitamin C 152 mg', 'Vitamin A 187 µg RAE', 'Potassium 251 mg'] },
+  { name: 'Cauliflower', category: 'vegetable', serving: '1 cup chopped', servingWeightG: 107, nutritionPerServing: { caloriesKcal: 26.75, carbsG: 5.32, fiberG: 2.14, sugarG: 2.04, proteinG: 2.05, fatG: 0.3 }, micronutrientsPerServing: ['Vitamin C 52 mg', 'Folate 61 µg', 'Potassium 320 mg'] },
+  { name: 'Sweet potato', category: 'vegetable', serving: '1 medium', servingWeightG: 130, nutritionPerServing: { caloriesKcal: 111.8, carbsG: 26.16, fiberG: 3.9, sugarG: 5.43, proteinG: 2.04, fatG: 0.07 }, micronutrientsPerServing: ['Vitamin A 922 µg RAE', 'Potassium 438 mg'] },
+  { name: 'Onion', category: 'vegetable', serving: '1 medium', servingWeightG: 110, nutritionPerServing: { caloriesKcal: 44, carbsG: 10.27, fiberG: 1.87, sugarG: 4.66, proteinG: 1.21, fatG: 0.11 }, micronutrientsPerServing: ['Vitamin C 8.1 mg', 'Folate 21 µg'] },
+  { name: 'Kale', category: 'vegetable', serving: '1 cup chopped', servingWeightG: 21, nutritionPerServing: { caloriesKcal: 7.35, carbsG: 0.93, fiberG: 0.86, sugarG: 0.21, proteinG: 0.61, fatG: 0.31 }, micronutrientsPerServing: ['Vitamin K 148 µg', 'Vitamin C 20 mg', 'Calcium 53 mg'] },
+  { name: 'Zucchini', category: 'vegetable', serving: '1 medium', servingWeightG: 196, nutritionPerServing: { caloriesKcal: 33.32, carbsG: 6.1, fiberG: 1.96, sugarG: 4.9, proteinG: 2.37, fatG: 0.63 }, micronutrientsPerServing: ['Vitamin C 35 mg', 'Potassium 511 mg'] },
+  { name: 'Green peas', category: 'vegetable', serving: '1 cup', servingWeightG: 145, nutritionPerServing: { caloriesKcal: 117.45, carbsG: 20.95, fiberG: 7.4, sugarG: 8.22, proteinG: 7.86, fatG: 0.58 }, micronutrientsPerServing: ['Folate 94 µg', 'Vitamin C 58 mg', 'Potassium 354 mg'] },
+  { name: 'Potato', category: 'vegetable', serving: '1 medium', servingWeightG: 173, nutritionPerServing: { caloriesKcal: 161, carbsG: 36.6, fiberG: 3.8, sugarG: 1.7, proteinG: 4.3, fatG: 0.2 }, micronutrientsPerServing: ['Potassium 926 mg', 'Vitamin C 20 mg'] },
+  { name: 'Brinjal', category: 'vegetable', serving: '1 cup cubed', servingWeightG: 82, nutritionPerServing: { caloriesKcal: 20, carbsG: 4.8, fiberG: 2, sugarG: 2.9, proteinG: 0.8, fatG: 0.2 }, micronutrientsPerServing: ['Manganese 0.18 mg', 'Folate 18 µg'] },
+  { name: 'Cabbage', category: 'vegetable', serving: '1 cup shredded', servingWeightG: 89, nutritionPerServing: { caloriesKcal: 22, carbsG: 5.2, fiberG: 2.2, sugarG: 2.9, proteinG: 1.1, fatG: 0.1 }, micronutrientsPerServing: ['Vitamin C 32 mg', 'Vitamin K 68 µg'] },
+  { name: 'Beetroot', category: 'vegetable', serving: '1 medium', servingWeightG: 82, nutritionPerServing: { caloriesKcal: 35, carbsG: 7.8, fiberG: 1.7, sugarG: 5.5, proteinG: 1.3, fatG: 0.1 }, micronutrientsPerServing: ['Folate 88 µg', 'Potassium 266 mg'] },
+  { name: 'Radish', category: 'vegetable', serving: '1 cup sliced', servingWeightG: 116, nutritionPerServing: { caloriesKcal: 19, carbsG: 3.9, fiberG: 1.9, sugarG: 2.2, proteinG: 0.8, fatG: 0.1 }, micronutrientsPerServing: ['Vitamin C 17 mg', 'Potassium 270 mg'] },
+  { name: 'Garlic', category: 'vegetable', serving: '3 cloves', servingWeightG: 9, nutritionPerServing: { caloriesKcal: 13, carbsG: 3, fiberG: 0.2, sugarG: 0.1, proteinG: 0.6, fatG: 0.1 }, micronutrientsPerServing: ['Manganese 0.15 mg', 'Vitamin C 2.8 mg'] },
+  { name: 'Ginger', category: 'vegetable', serving: '1 tbsp grated', servingWeightG: 6, nutritionPerServing: { caloriesKcal: 5, carbsG: 1.1, fiberG: 0.1, sugarG: 0.1, proteinG: 0.1, fatG: 0.1 }, micronutrientsPerServing: ['Potassium 26 mg', 'Manganese 0.02 mg'] },
+  { name: 'Green chili', category: 'vegetable', serving: '1 medium pepper', servingWeightG: 10, nutritionPerServing: { caloriesKcal: 4, carbsG: 0.9, fiberG: 0.2, sugarG: 0.5, proteinG: 0.2, fatG: 0 }, micronutrientsPerServing: ['Vitamin C 10 mg', 'Vitamin A 10 µg RAE'] },
+  { name: 'Coriander leaves', category: 'vegetable', serving: '1/4 cup chopped', servingWeightG: 4, nutritionPerServing: { caloriesKcal: 1, carbsG: 0.2, fiberG: 0.1, sugarG: 0, proteinG: 0.1, fatG: 0 }, micronutrientsPerServing: ['Vitamin K 12 µg', 'Vitamin C 1 mg'] },
+  { name: 'Fenugreek leaves', category: 'vegetable', serving: '1 cup raw', servingWeightG: 22, nutritionPerServing: { caloriesKcal: 9, carbsG: 1.9, fiberG: 0.9, sugarG: 0.3, proteinG: 0.9, fatG: 0.2 }, micronutrientsPerServing: ['Vitamin A 46 µg RAE', 'Vitamin K 22 µg'] },
+  { name: 'Pumpkin', category: 'vegetable', serving: '1 cup cubed', servingWeightG: 116, nutritionPerServing: { caloriesKcal: 30, carbsG: 7.5, fiberG: 0.6, sugarG: 3.2, proteinG: 1.2, fatG: 0.1 }, micronutrientsPerServing: ['Vitamin A 426 µg RAE', 'Potassium 394 mg'] },
+  { name: 'Okra', category: 'vegetable', serving: '1 cup sliced', servingWeightG: 100, nutritionPerServing: { caloriesKcal: 33, carbsG: 7.5, fiberG: 3.2, sugarG: 1.5, proteinG: 1.9, fatG: 0.2 }, micronutrientsPerServing: ['Vitamin C 23 mg', 'Folate 60 µg'] },
+  { name: 'Sweet corn', category: 'vegetable', serving: '1 medium ear, kernels', servingWeightG: 90, nutritionPerServing: { caloriesKcal: 86, carbsG: 19, fiberG: 2.7, sugarG: 6.3, proteinG: 3.3, fatG: 1.4 }, micronutrientsPerServing: ['Folate 42 µg', 'Potassium 270 mg'] },
+  { name: 'Capsicum', category: 'vegetable', serving: '1 medium green pepper', servingWeightG: 119, nutritionPerServing: { caloriesKcal: 24, carbsG: 5.5, fiberG: 2, sugarG: 2.9, proteinG: 1, fatG: 0.2 }, micronutrientsPerServing: ['Vitamin C 95 mg', 'Potassium 262 mg'] },
+  { name: 'Bottle gourd', category: 'vegetable', serving: '1 cup cubed', servingWeightG: 116, nutritionPerServing: { caloriesKcal: 15, carbsG: 3.5, fiberG: 0.6, sugarG: 1.6, proteinG: 0.6, fatG: 0.1 }, micronutrientsPerServing: ['Vitamin C 10 mg', 'Potassium 170 mg'] },
+  { name: 'Bitter gourd', category: 'vegetable', serving: '1 cup chopped', servingWeightG: 94, nutritionPerServing: { caloriesKcal: 20, carbsG: 4, fiberG: 2, sugarG: 1.9, proteinG: 1.9, fatG: 0.2 }, micronutrientsPerServing: ['Vitamin C 40 mg', 'Folate 72 mcg'] },
+  { name: 'Ridge gourd', category: 'vegetable', serving: '1 cup sliced', servingWeightG: 124, nutritionPerServing: { caloriesKcal: 20, carbsG: 4, fiberG: 1.5, sugarG: 1.2, proteinG: 1.2, fatG: 0.2 }, micronutrientsPerServing: ['Vitamin C 6 mg', 'Potassium 150 mg'] },
+  { name: 'Ash gourd', category: 'vegetable', serving: '1 cup cubed', servingWeightG: 124, nutritionPerServing: { caloriesKcal: 17, carbsG: 4.5, fiberG: 0.6, sugarG: 1.7, proteinG: 0.6, fatG: 0.1 }, micronutrientsPerServing: ['Vitamin C 14 mg', 'Potassium 150 mg'] },
+  { name: 'Snake gourd', category: 'vegetable', serving: '1 cup chopped', servingWeightG: 124, nutritionPerServing: { caloriesKcal: 25, carbsG: 5.5, fiberG: 2.5, sugarG: 1.2, proteinG: 1.2, fatG: 0.2 }, micronutrientsPerServing: ['Vitamin C 8 mg', 'Potassium 150 mg'] },
+  { name: 'Drumstick pods', category: 'vegetable', serving: '1 cup chopped', servingWeightG: 100, nutritionPerServing: { caloriesKcal: 37, carbsG: 8.5, fiberG: 3.2, sugarG: 1.7, proteinG: 2.1, fatG: 0.2 }, micronutrientsPerServing: ['Vitamin C 141 mg', 'Potassium 461 mg'] },
+  { name: 'Raw banana', category: 'vegetable', serving: '1 medium plantain', servingWeightG: 100, nutritionPerServing: { caloriesKcal: 122, carbsG: 31.9, fiberG: 2.3, sugarG: 15, proteinG: 1.3, fatG: 0.4 }, micronutrientsPerServing: ['Potassium 499 mg', 'Vitamin B6 0.3 mg'] },
+  { name: 'Taro root', category: 'vegetable', serving: '1 medium root', servingWeightG: 100, nutritionPerServing: { caloriesKcal: 112, carbsG: 26.5, fiberG: 4.1, sugarG: 0.4, proteinG: 1.5, fatG: 0.2 }, micronutrientsPerServing: ['Potassium 591 mg', 'Vitamin C 5 mg'] },
+  { name: 'Yam', category: 'vegetable', serving: '1 cup cubed', servingWeightG: 136, nutritionPerServing: { caloriesKcal: 158, carbsG: 37.5, fiberG: 5.3, sugarG: 0.8, proteinG: 2.3, fatG: 0.2 }, micronutrientsPerServing: ['Potassium 816 mg', 'Vitamin C 17 mg'] },
+  { name: 'Cluster beans', category: 'vegetable', serving: '1 cup', servingWeightG: 110, nutritionPerServing: { caloriesKcal: 35, carbsG: 7.5, fiberG: 3.3, sugarG: 3.6, proteinG: 3, fatG: 0.2 }, micronutrientsPerServing: ['Calcium 156 mg', 'Vitamin C 16 mg'] },
+  { name: 'French beans', category: 'vegetable', serving: '1 cup raw', servingWeightG: 100, nutritionPerServing: { caloriesKcal: 31, carbsG: 7, fiberG: 2.7, sugarG: 3.3, proteinG: 1.8, fatG: 0.2 }, micronutrientsPerServing: ['Vitamin C 12 mg', 'Folate 33 mcg'] },
+  { name: 'Ivy gourd', category: 'vegetable', serving: '1 cup sliced', servingWeightG: 100, nutritionPerServing: { caloriesKcal: 18, carbsG: 3.1, fiberG: 1.6, sugarG: 1.6, proteinG: 1.2, fatG: 0.1 }, micronutrientsPerServing: ['Vitamin C 15 mg', 'Calcium 18 mg'] },
+  { name: 'Pointed gourd', category: 'vegetable', serving: '1 cup chopped', servingWeightG: 100, nutritionPerServing: { caloriesKcal: 24, carbsG: 4.9, fiberG: 1.5, sugarG: 1.2, proteinG: 1.3, fatG: 0.2 }, micronutrientsPerServing: ['Vitamin C 15 mg', 'Vitamin A 33 mcg RAE'] },
+  { name: 'Curry leaves', category: 'vegetable', serving: '1 tbsp chopped', servingWeightG: 2, nutritionPerServing: { caloriesKcal: 1, carbsG: 0.2, fiberG: 0.1, sugarG: 0, proteinG: 0.1, fatG: 0 }, micronutrientsPerServing: ['Vitamin A 14 mcg RAE', 'Calcium 8 mg'] },
+]
+
+/** @type {ProduceItem[]} */
+export const produce = [...fruits, ...vegetables]
